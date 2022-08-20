@@ -1,0 +1,58 @@
+header h1 {
+    text-align: center;
+}
+
+#scan {
+    width: 55vw;
+    height: 55vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    float: center;
+    margin: auto;    
+}
+
+#output {
+    width: 100%;
+    height: 70%;
+}
+
+.in {
+    width: 45%;
+    height: 100%;
+}
+
+.out {
+    width: 45%;
+    height: 45%;
+    background-color: grey;
+    padding-left: 10px;
+    padding-top: 0%;
+}
+
+#file {
+    display: none;
+}
+
+.btn {
+    display: none;
+}
+
+.prof {    
+    width: 100%;
+    border-radius: 10px;
+    height: 25px;
+    text-align: center;
+}
+
+#upload {
+    background-color: grey;
+}
+
+#submit {
+    background-color: green;
+}
+
+#scan p label {
+    cursor: pointer;
+}

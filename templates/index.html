@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style type="text/css">
+        header h1 {
+    text-align: center;
+}
+
+#scan {
+    width: 55vw;
+    height: 55vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    float: center;
+    margin: auto;    
+}
+
+#output {
+    width: 100%;
+    height: 70%;
+}
+
+.in {
+    width: 45%;
+    height: 100%;
+}
+
+.out {
+    width: 45%;
+    height: 70%;
+    background-color: grey;
+    padding-left: 10px;
+    padding-top: 0%;
+}
+
+#file {
+    display: none;
+}
+
+.btn {
+    display: none;
+}
+
+.prof {    
+    width: 100%;
+    border-radius: 10px;
+    height: 25px;
+    text-align: center;
+}
+
+#upload {
+    background-color: grey;
+}
+
+#submit {
+    background-color: green;
+}
+
+#scan p label {
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>
+            AI Based Skin Cancer Detector
+        </h1>
+    </header>
+    <div id="scan">
+        <div class="in">
+            <img src = {{ test }} id="output" alt="">
+
+        <form method="POST" action="http://127.0.0.1:5000/skincancer" enctype="multipart/form-data">
+            <input type="file" name="image" id="file" accept="image/*" onchange="loadFile(event)">
+            <input type="submit" id="submit" style="display: none;" >
+        </form>
+
+            <p class="prof" id="upload">
+                <label for="file">
+                    Upload Image
+                </label>
+            </p>
+            <p class="prof" id="submit">
+                <label for="submit">
+                    Submit Image
+                </label>
+            </p>
+            <br>
+        </div>
+
+        <div class="out" id="testing">
+            <h3 id="testing">
+                RESULT:
+            </h3>
+            <h3 id="testing">
+                ACCURACY: {{ test }}
+            </h3>
+            <h3>
+                SUGGESTIONS:
+            </h3>
+            <h3>
+                ERROR:
+            </h3>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var loadFile = function(event){
+            var image = document.getElementById("output");
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+        function loadDoc(){
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function(){
+                document.getElementById("testing").innerHTML = this.responseText;
+                alert("file updated");
+            }
+            xhttp.open("GET","http://127.0.0.1:5000/skincancer",true);
+            xhttp.send();
+        };
+    </script>
+</body>
+</html>

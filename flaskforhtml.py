@@ -6,7 +6,9 @@ from sklearn.preprocessing import MinMaxScaler
 import joblib
 import cv2
 
+
 logisticRegr = joblib.load('c:/users/johnpaul/desktop/finalized_model.sav')
+scaler = MinMaxScaler()
 
 
 app = Flask(__name__,  static_folder='static')
@@ -24,6 +26,7 @@ def skincancer():
 
 		uploaded_file.save(filenn)
 		image = cv2.imread(filenn)
+		image = scaler.fit_transform(image)
 
 		image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 		ggg = "greay"

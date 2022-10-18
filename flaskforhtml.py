@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
-#import cv2
 import os
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import MinMaxScaler
 import joblib
-
+import cv2
 
 logisticRegr = joblib.load('c:/users/johnpaul/desktop/finalized_model.sav')
 
